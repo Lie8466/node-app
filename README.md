@@ -12,7 +12,7 @@
 
 4. node index.js
 
-5. 浏览器打开http://localhost:8888/public/start，可以选择文件进行上传
+5. 浏览器打开http://localhost:8888/public/start ，可以选择文件进行上传
 
 参考文档：
 
