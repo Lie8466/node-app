@@ -1,7 +1,8 @@
 {
-  "name": "node-server",
+  "name": "node-app",
   "version": "0.0.1",
   "dependencies": {
+    "express": "^4.16.2",
     "formidable": "^1.1.1"
   }
 }
