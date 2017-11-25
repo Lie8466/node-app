@@ -6,7 +6,7 @@
 
 1. git clone 到本地
 
-2. cd到node-server文件夹
+2. cd到node-app文件夹
 
 3. npm install
 
