@@ -8,7 +8,7 @@
 
 2. cd到node-server文件夹
 
-3. npm install formidable
+3. npm install
 
 4. node index.js
 
