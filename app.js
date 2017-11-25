@@ -19,7 +19,7 @@ app.post('/upload', function (req, res) {
         console.log("parsing done");
         console.log(files.upload.path);
         fs.writeFileSync("public/test.png", fs.readFileSync(files.upload.path));
-        res.redirect("http://localhost:3000/public/upload.html") ;
+        res.redirect("/public/upload.html") ;
     });
 });
 
