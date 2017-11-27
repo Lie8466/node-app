@@ -2,6 +2,7 @@
   "name": "node-server",
   "version": "0.0.1",
   "dependencies": {
-    "formidable": "^1.1.1"
+    "formidable": "^1.1.1",
+    "serve-static": "^1.13.1"
   }
 }
