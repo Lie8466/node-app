@@ -1,15 +1,23 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const glob = require('glob');
 
 const PATH_ROOT = path.resolve(__dirname, '..');
 const PATHS = {
     NODE_MODULES: path.resolve(PATH_ROOT, 'node_modules')
 };
 
+
 module.exports = {
-    entry: './src/main.js',
+    entry: {
+        app: './src/main.js'
+    },
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, '../build')
+        path: path.resolve(__dirname, '../build'),
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.js', '.vue'],
@@ -18,14 +26,13 @@ module.exports = {
             'src': path.resolve(__dirname, '../src')
         }
     },
+    devtool: 'inline-source-map',
+    devServer: {
+        contentBase: './build',
+        hot: true
+    },
     module: {
         rules: [
-            // {
-            //     test: /\.vue$/,
-            //     enforce: 'pre',
-            //     loader: 'eslint-loader',
-            //     exclude: [PATHS.NODE_MODULES]
-            // },
             {
                 test: /\.scss|.css$/,
                 use: [{
@@ -62,5 +69,21 @@ module.exports = {
                     limit: 10000
                 }
             }]
-    }
+    },
+    plugins: [
+        // // 清理build文件夹
+        // new CleanWebpackPlugin(['../build/*.*']),
+        // 热更新
+        new webpack.NamedModulesPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            data: {
+                build: false
+            },
+            filename: 'index.html',
+            template: 'ejs-compiled-loader!' + './src/index.html',
+            inject: false,
+            minify: false
+    })
+    ]
 };
