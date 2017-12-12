@@ -1,21 +1,16 @@
-var path = require('path')
-var glob = require('glob')
-var utils = require('./utils')
+const path = require('path');
 
 const PATH_ROOT = path.resolve(__dirname, '..');
 const PATHS = {
     NODE_MODULES: path.resolve(PATH_ROOT, 'node_modules')
 };
 
-
-var js = glob.sync('./src/**/*.js').reduce(function (prev, curr) {
-    prev[curr.slice(6, -3)] = [curr];
-    return prev;
-}, {})
-
-
 module.exports = {
-    entry: js,
+    entry: './src/main.js',
+    output: {
+        filename: 'main.js',
+        path: path.resolve(__dirname, '../build')
+    },
     resolve: {
         extensions: ['.js', '.vue'],
         alias: {
@@ -25,12 +20,12 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.vue$/,
-                enforce: 'pre',
-                loader: 'eslint-loader',
-                exclude: [PATHS.NODE_MODULES]
-            },
+            // {
+            //     test: /\.vue$/,
+            //     enforce: 'pre',
+            //     loader: 'eslint-loader',
+            //     exclude: [PATHS.NODE_MODULES]
+            // },
             {
                 test: /\.scss|.css$/,
                 use: [{
@@ -68,4 +63,4 @@ module.exports = {
                 }
             }]
     }
-}
+};
