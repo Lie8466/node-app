@@ -23,7 +23,8 @@ module.exports = {
         extensions: ['.js', '.vue'],
         alias: {
             'vue$': 'vue/dist/vue',
-            'src': path.resolve(__dirname, '../src')
+            'src': path.resolve(__dirname, '../src'),
+            '@common': path.resolve(__dirname, '../src/common'),
         }
     },
     devtool: 'inline-source-map',
